@@ -1,0 +1,10 @@
+{
+    "enabled": true,
+    "amplitude_x": 3.2,
+    "amplitude_y": 2.4,
+    "frequency_hz": 36.0,
+    "secondary_frequency_hz": 68.0,
+    "organic_stagger": 1.618,
+    "fps": 60,
+    "pause_on_mouse_down": true
+}

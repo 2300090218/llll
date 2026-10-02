@@ -1,0 +1,243 @@
+backgroundTranslucentEffect: acrylicblur
+backgroundTranslucentEffectRegion: ""
+explorerFrameContainerHeight: 0
+xamlDiagnosticsHandling: ""
+themeResourceVariables:
+  - ''
+
+styleConstants:
+  - Background=Transparent
+  - GlassBackground=<WindhawkBlur BlurAmount="15" TintColor="{ThemeResource SystemAltLowColor}" TintOpacity="0.10" />
+  - ElementBackground=<WindhawkBlur BlurAmount="15" TintColor="{ThemeResource SystemAltLowColor}" TintOpacity="0.22" />
+  - BorderBrush=<LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#40808080" Offset="0.0" /><GradientStop Color="#20404040" Offset="0.25" /><GradientStop Color="#40808080" Offset="1" /></LinearGradientBrush>
+  - ElementBorderBrush=<LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#70ffffff" Offset="0.0" /><GradientStop Color="{ThemeResource SurfaceStrokeColorDefault}" Offset="0.55" /><GradientStop Color="#70ffffff" Offset="1" /></LinearGradientBrush>
+
+controlStyles:
+  # Right-Side Control/Details Pane (Fully Transparent with Liquid Glass outline)
+  - target: Grid#DetailsViewControlRootGrid, Microsoft.UI.Xaml.Controls.Grid#DetailsViewControlRootGrid
+    styles:
+      - Margin=12,10,14,14
+      - Background=Transparent
+      - BorderBrush:=$BorderBrush
+      - BorderThickness=1
+      - CornerRadius=14
+
+  # Hide the solid blue folder icon in the details pane
+  - target: StackPanel#DetailsViewThumbnail > Grid, Microsoft.UI.Xaml.Controls.StackPanel#DetailsViewThumbnail > Microsoft.UI.Xaml.Controls.Grid
+    styles:
+      - Background=Transparent
+      - Visibility=Collapsed
+
+  - target: StackPanel#DetailsViewThumbnail, Microsoft.UI.Xaml.Controls.StackPanel#DetailsViewThumbnail
+    styles:
+      - Background=Transparent
+      - Visibility=Collapsed
+
+  # Main Home View Panel (Transparent)
+  - target: Grid#HomeViewRootGrid, Microsoft.UI.Xaml.Controls.Grid#HomeViewRootGrid
+    styles:
+      - Margin=14,10,14,14
+      - Background=Transparent
+      - BorderBrush:=$BorderBrush
+      - BorderThickness=1
+      - CornerRadius=14
+
+  # Gallery View Panel (Transparent)
+  - target: FileExplorerExtensions.GalleryViewControl#GalleryViewControl > Grid, FileExplorerExtensions.GalleryViewControl#GalleryViewControl > Microsoft.UI.Xaml.Controls.Grid
+    styles:
+      - Margin=14,10,14,14
+      - Background=Transparent
+      - BorderBrush:=$BorderBrush
+      - BorderThickness=1
+      - CornerRadius=14
+
+  - target: Microsoft.UI.Xaml.Controls.Grid#GalleryRootGrid, Grid#GalleryRootGrid
+    styles:
+      - Margin=10
+      - Background=Transparent
+      - CornerRadius=14
+
+  # Navigation & Command Bar Controls (Transparent)
+  - target: CommandBar#FileExplorerCommandBar, Microsoft.UI.Xaml.Controls.CommandBar#FileExplorerCommandBar
+    styles:
+      - Background=Transparent
+      - HorizontalAlignment=1
+
+  - target: CommandBar#FileExplorerSecondaryCommandBar, Microsoft.UI.Xaml.Controls.CommandBar#FileExplorerSecondaryCommandBar
+    styles:
+      - Background=Transparent
+      - MinHeight=0
+
+  - target: Grid#CommandBarControlRootGrid, FileExplorerExtensions.CommandBarControl_Wave1 > Grid
+    styles:
+      - Background=Transparent
+      - BorderBrush=Transparent
+
+  - target: Grid#NavigationBarControlGrid, Microsoft.UI.Xaml.Controls.Grid#NavigationBarControlGrid
+    styles:
+      - Background=Transparent
+      - BorderBrush=Transparent
+
+  # Navigation Pane (Left sidebar) Item Presenter
+  - target: Microsoft.UI.Xaml.Controls.Primitives.NavigationViewItemPresenter#NavigationViewItemPresenter > Microsoft.UI.Xaml.Controls.Grid#LayoutRoot
+    styles:
+      - Background=Transparent
+      - BorderBrush=Transparent
+
+  # Navigation buttons (Back, Forward, Up)
+  - target: Microsoft.UI.Xaml.Controls.AppBarButton > Grid@CommonStates
+    styles:
+      - Background@Disabled:=$ElementBackground
+      - CornerRadius@Disabled=12
+      - BorderThickness@Disabled=1
+      - Margin@Disabled=2,6,2,6
+      - Padding@Disabled=0,-7
+      - BorderBrush:=$ElementBorderBrush
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarButton#backButton > Grid@CommonStates
+    styles:
+      - Background@Disabled:=$ElementBackground
+      - CornerRadius@Disabled=11
+      - BorderThickness@Disabled=1
+      - BorderBrush:=$ElementBorderBrush
+      - Margin@Disabled=0,0,0,0
+      - Height@Disabled=32
+      - Width@Disabled=20
+      - Padding@Disabled=0,-2,0,2
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarButton#forwardButton > Grid@CommonStates
+    styles:
+      - Background@Disabled:=$ElementBackground
+      - CornerRadius@Disabled=11
+      - BorderThickness@Disabled=1
+      - BorderBrush:=$ElementBorderBrush
+      - Margin@Disabled=0,0,0,0
+      - Height@Disabled=32
+      - Width@Disabled=20
+      - Padding@Disabled=0,-2,0,2
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarButton#upButton > Grid@CommonStates
+    styles:
+      - Background@Disabled:=$ElementBackground
+      - CornerRadius@Disabled=11
+      - BorderThickness@Disabled=1
+      - BorderBrush:=$ElementBorderBrush
+      - Margin@Disabled=0,0,0,0
+      - Height@Disabled=32
+      - Width@Disabled=20
+      - Padding@Disabled=0,-2,0,2
+
+  # Tabs (Frosted Glass Pills)
+  - target: Grid#TabContainerGrid > Border#LeftBottomBorderLine
+    styles:
+      - Visibility=Collapsed
+
+  - target: Grid#TabContainerGrid > Border#RightBottomBorderLine
+    styles:
+      - Visibility=Collapsed
+
+  - target: TabViewItem
+    styles:
+      - Margin=0,0,8,0
+
+  - target: TabViewItem > Grid#LayoutRoot
+    styles:
+      - CornerRadius=12
+      - Margin=2,4,0,4
+      - Height=27
+      - BorderThickness=1
+      - BorderBrush:=$ElementBorderBrush
+
+  - target: TabViewItem > Grid#LayoutRoot > Canvas
+    styles:
+      - Visibility=Collapsed
+
+  - target: TabViewItem > Grid#LayoutRoot > Grid#TabContainer
+    styles:
+      - Background=Transparent
+      - BorderThickness=0
+
+  - target: TabViewItem > Grid#LayoutRoot@CommonStates
+    styles:
+      - Background@Selected:=$ElementBackground
+      - Background@PointerOverSelected:=$GlassBackground
+      - Background@Normal:=<WindhawkBlur BlurAmount="15" TintColor="{ThemeResource SystemAltLowColor}" TintOpacity="0.08" />
+
+  - target: Grid#TabContainerGrid > Border > Button#AddButton
+    styles:
+      - Visibility=Visible
+      - Margin=0,0,0,2
+      - Background:=$ElementBackground
+      - CornerRadius=10
+      - BorderThickness=1
+      - BorderBrush:=$ElementBorderBrush
+      - Width=24
+      - Height=24
+
+  # Address Bar & Search Box
+  - target: Microsoft.UI.Xaml.Controls.Grid#FileExplorerAddressBarGrid
+    styles:
+      - Margin=-6,0,0,0      
+
+  - target: Grid#PART_LayoutRoot, Microsoft.UI.Xaml.Controls.Grid#PART_LayoutRoot
+    styles:
+      - Background:=$GlassBackground
+      - CornerRadius=14
+      - BorderThickness=1
+      - Margin=2
+      - BorderBrush:=$ElementBorderBrush
+
+  - target: FileExplorerExtensions.CommandBarControl
+    styles:
+      - Margin=0,0,0,0
+
+  - target: AutoSuggestBox#FileExplorerSearchBox > Grid#LayoutRoot > TextBox > Grid@CommonStates > Border#BorderElement, Microsoft.UI.Xaml.Controls.AutoSuggestBox#FileExplorerSearchBox > Microsoft.UI.Xaml.Controls.Grid#LayoutRoot > Microsoft.UI.Xaml.Controls.TextBox > Grid@CommonStates > Border#BorderElement
+    styles:
+      - Background:=$GlassBackground
+      - CornerRadius=14
+      - BorderThickness=1
+      - BorderBrush:=$ElementBorderBrush
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarButton
+    styles:
+      - Background:=$ElementBackground
+      - CornerRadius=12
+      - BorderThickness=1
+      - Margin=3,0,3,1
+      - BorderBrush:=$ElementBorderBrush
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarToggleButton
+    styles:
+      - Background:=$ElementBackground
+      - CornerRadius=12
+      - BorderThickness=1
+      - Margin=3,0,3,1
+      - BorderBrush:=$ElementBorderBrush
+
+  - target: Microsoft.UI.Xaml.Controls.Grid#OuterOverflowContentRootV2
+    styles:
+      - CornerRadius=20
+
+  - target: Button#MoreButton
+    styles:
+      - Visibility=Collapsed
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarSeparator
+    styles:
+      - Visibility=Collapsed
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarButton#backButton
+    styles:
+      - Margin=0,9,9,0
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarButton#forwardButton
+    styles:
+      - Margin=0,9,9,0
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarButton#upButton
+    styles:
+      - Margin=0,9,9,0
+
+  - target: Microsoft.UI.Xaml.Controls.AppBarButton#refreshButton
+    styles:
+      - Margin=0,9,9,0

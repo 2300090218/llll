@@ -1,0 +1,20 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary process IDs and logs
+*.pid
+*.log
+*log.txt
+desktop_lv_test.txt
+battery_report.html
+
+# PyInstaller intermediate build caches and unpacked binaries
+build/
+dist/bin/
+
+# Virtual environments
+venv/
+.venv/
+env/
