@@ -14,14 +14,19 @@ public class WallpaperManager {
 }
 "@
 
-$themeDir = "C:\Users\bhara\AppData\Local\OS26_Liquid_Glass"
+$themeDir = Join-Path $env:LOCALAPPDATA "OS26_Liquid_Glass"
 if (-not (Test-Path $themeDir)) {
     New-Item -ItemType Directory -Path $themeDir -Force | Out-Null
 }
 
-$wpSrc = "c:\Users\bhara\OneDrive\Documents\llll\OS26_Ice_Frost_Wallpaper_4K.jpg"
+$wpSrc = Join-Path $PSScriptRoot "OS26_Ice_Frost_Wallpaper_4K.jpg"
+if (-not (Test-Path $wpSrc)) {
+    $wpSrc = Join-Path $PSScriptRoot "assets\wallpaper\OS26_Ice_Frost_Wallpaper_4K.jpg"
+}
 $wpDest = Join-Path $themeDir "OS26_Ice_Frost_Wallpaper_4K.jpg"
-Copy-Item $wpSrc $wpDest -Force
+if (Test-Path $wpSrc) {
+    Copy-Item $wpSrc $wpDest -Force
+}
 
 # 1. Apply Wallpaper
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "Wallpaper" -Value $wpDest

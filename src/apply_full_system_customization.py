@@ -11,16 +11,27 @@ print(" OS26 LIQUID GLASS: FULL SYSTEM CUSTOMIZATION ENGINE  ")
 print("=======================================================")
 
 user_profile = os.environ['USERPROFILE']
-icons_src = r'c:\Users\bhara\OneDrive\Documents\llll\Icons\ico'
-permanent_dir = r'C:\Users\bhara\AppData\Local\OS26_Liquid_Glass'
+local_appdata = os.environ.get('LOCALAPPDATA', os.path.join(user_profile, 'AppData', 'Local'))
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
+icons_src = os.path.join(ROOT, 'Icons', 'ico')
+if not os.path.exists(icons_src):
+    icons_src = os.path.join(ROOT, 'Icons')
+if not os.path.exists(icons_src):
+    icons_src = os.path.join(ROOT, 'assets', 'icons')
+
+permanent_dir = os.path.join(local_appdata, 'OS26_Liquid_Glass')
 icons_dest = os.path.join(permanent_dir, 'Icons')
 wallpaper_path = os.path.join(permanent_dir, 'OS26_Ice_Frost_Wallpaper_4K.jpg')
 
 os.makedirs(icons_dest, exist_ok=True)
 
 # 1. Copy wallpaper if needed
-if os.path.exists(r'c:\Users\bhara\OneDrive\Documents\llll\OS26_Ice_Frost_Wallpaper_4K.jpg'):
-    shutil.copy2(r'c:\Users\bhara\OneDrive\Documents\llll\OS26_Ice_Frost_Wallpaper_4K.jpg', wallpaper_path)
+wp_local = os.path.join(ROOT, 'OS26_Ice_Frost_Wallpaper_4K.jpg')
+if not os.path.exists(wp_local):
+    wp_local = os.path.join(ROOT, 'assets', 'wallpaper', 'OS26_Ice_Frost_Wallpaper_4K.jpg')
+if os.path.exists(wp_local):
+    shutil.copy2(wp_local, wallpaper_path)
 
 # 2. Copy all icons to permanent AppData directory
 for f in os.listdir(icons_src):
